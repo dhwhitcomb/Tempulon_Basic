@@ -1,6 +1,5 @@
 import os
 from datetime import datetime
-
 import requests
 
 API_KEY = "67cc2ef2e5195ccb3be69bb343f18f83"
