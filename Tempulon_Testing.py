@@ -2,9 +2,11 @@ import unittest
 from unittest.mock import patch, mock_open
 from datetime import datetime
 
+import Tempulon_Basic as tempulon  # Updated to match your actual filename
 
 class TestTempulon(unittest.TestCase):
 
+    @patch("Tempulon_Basic.requests.get")
     def test_get_coordinates_success(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = [{
@@ -15,6 +17,7 @@ class TestTempulon(unittest.TestCase):
         lat, lon, name = tempulon.get_coordinates("Minneapolis", "MN")
         self.assertEqual((lat, lon, name), (44.9778, -93.2650, "Minneapolis"))
 
+    @patch("Tempulon_Basic.requests.get")
     def test_get_coordinates_failure(self, mock_get):
         mock_get.return_value.status_code = 404
         mock_get.return_value.json.return_value = []
