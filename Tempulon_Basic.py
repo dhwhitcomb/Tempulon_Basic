@@ -93,7 +93,7 @@ def display_weather(data, unit="C"):
 def display_forecast(forecast_data, unit="C"):
     if not forecast_data:
         print("No forecast data available.")
-        return
+        return None
 
     print("3-Day Forecast:")
     daily_summary = {}
